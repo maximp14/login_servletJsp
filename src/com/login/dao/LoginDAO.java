@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.login.DBConnection;
+import com.login.controller.DBConnection;
 
 public class LoginDAO {
 
@@ -27,6 +27,8 @@ public class LoginDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();   /// i know is bad practice its just for now
+		}finally {
+			connection.closeConnection();
 		}
 		
 		

@@ -1,4 +1,4 @@
-package com.login;
+package com.login.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import com.login.dao.LoginDAO;
 
 
 @WebServlet("/Login")
-public class Login extends HttpServlet {
+public class LoginController extends HttpServlet {
 	private LoginDAO loginDAO = new LoginDAO();
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

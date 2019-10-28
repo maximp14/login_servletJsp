@@ -1,4 +1,4 @@
-package com.login;
+package com.login.controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,16 +6,16 @@ import java.sql.SQLException;
 
 public class DBConnection {
 	
-	 private final static String login = "root";
-	    private final static String password = "password123";
-	    private final static String url = "jdbc:mysql://localhost:3306/servlet_jsp";
+	    private final static String login = "root";
+	    private final static String password = "root";
+	    private final static String url = "jdbc:mysql://localhost:3306/servlet";
 	    private static DBConnection instance = null;
 	    private Connection connection = null;
 
-	    private DBConnection(){
+	    private DBConnection() throws ClassNotFoundException{
 	        if(connection == null){
 	            try {
-
+	            	Class.forName("com.mysql.jdbc.Driver");
 	                connection = DriverManager.getConnection(url, login, password);
 	                if(connection != null){
 	                    System.out.println("Connection OK");
@@ -28,7 +28,12 @@ public class DBConnection {
 
 	    public static DBConnection getInstance(){
 	        if(instance == null){
-	            instance = new DBConnection();
+	            try {
+					instance = new DBConnection();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        }
 	        return instance;
 	    }
