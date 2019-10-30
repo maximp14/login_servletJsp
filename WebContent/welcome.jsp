@@ -3,20 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="assets\css\welcome.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
 <title>Welcome</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">	
-	<h5 align="center">Hello ${username} </h5>	
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>	
-	<button type="submit" value="Logout" class="btn btn-primary">Log out</button>
+	<div class="navbar navbar-expand-lg navbar-light bg-light">	
+	<h5 class="font-italic">Hello ${username} </h5>
+	<form action="Logout">
+	<button type="submit" value="Logout" class="btn btn-primary ml-auto">Log out</button>
+	</form>
 	</div>
-	</nav>
 	
-	<center><h2> Welcome to your bookstore </h2></center>
+		
 	<%
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); /// HTTP 1.1
 		response.setHeader("Pragma", "no-cache"); /// HTTP 1.0
@@ -29,8 +29,8 @@
 	
 
 	
-	<form action="Logout">
+	<!--<form action="Logout">
 	<button type="submit" value="Logout" class="btn btn-primary">Log out</button>
-	</form>
+	</form>-->
 </body>
 </html>

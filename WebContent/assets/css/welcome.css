@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+body{
+	background-image:url(../images/books3.jpg);	
+	background-size: cover;	
+}
+
+.mx-auto {
+ margin-right: auto !important;
+ margin-left: auto !important;
+}
