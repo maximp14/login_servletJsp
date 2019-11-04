@@ -19,7 +19,7 @@ public class AddBook extends HttpServlet {
 		BookDAO bookDAO = new BookDAO();
 		
 		String bookName = request.getParameter("bname");
-		String authorName = request.getParameter("bathor");
+		String authorName = request.getParameter("bauthor");
 		
 		if(!(bookName.isEmpty() && authorName.isEmpty())) {
 			Book book = new Book(bookName, authorName);
