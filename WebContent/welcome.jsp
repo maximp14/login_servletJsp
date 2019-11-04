@@ -26,11 +26,30 @@
 			response.sendRedirect("login.jsp");
 		}	
 	%>
-	
+	<a href="add.jsp" class="btn btn-info" role="button" id="addbutton">Add new book</a></p>
+	<table class="table table-dark" id="tablelist">
+  		<thead>
+		    <tr>      
+		      <th scope="col">Book Name</th>
+		      <th scope="col">Author</th>
+		      <th scope="col">Options</th>
+		    </tr>
+  		</thead>
+		<tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>Mark</td>
+		      <td>Otto</td>     
+		    </tr>
+		    <tr>
+		      <th scope="row">2</th>
+		      <td>Jacob</td>
+		      <td>Thornton</td>     
+		    </tr>
+    
+  	    </tbody>
+	</table>	
 
-	
-	<!--<form action="Logout">
-	<button type="submit" value="Logout" class="btn btn-primary">Log out</button>
-	</form>-->
+
 </body>
 </html>
