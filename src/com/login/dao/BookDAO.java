@@ -14,7 +14,8 @@ public class BookDAO{
 	final String CREATE = "INSERT INTO books (boo_name, boo_author) VALUES (?,?)";
 	final String DELETE = "DELETE FROM books WHERE boo_name = ?";
 	final String UPDATE = "UPDATE books SET boo_name = ?, boo_author = ? WHERE boo_name = ?";
-	final String GET_ALL= "SELECT boo_name, boo_author FROM books ";
+	final String GET_ALL = "SELECT boo_name, boo_author FROM books ";
+	final String FIND_ONE = "SELECT boo_name, boo_author WHERE boo_name = ?";
 	
 	private DBConnection connection = DBConnection.getInstance();
 	
@@ -53,6 +54,29 @@ public class BookDAO{
 			connection.closeConnection();
 		}
         return bookList;
+	}
+	
+	public Book findOne(String name) {
+		PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        Book book = null;
+        
+        try {
+			preparedStatement = connection.getConnection().prepareStatement(FIND_ONE);
+			preparedStatement.setString(1, name);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				book = new Book(resultSet.getString("boo_name"),resultSet.getString("boo_author"));
+			}
+			return book;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			connection.closeConnection();
+		}
+		return book;
 	}
 	
 	public void update(String name, Book book) {

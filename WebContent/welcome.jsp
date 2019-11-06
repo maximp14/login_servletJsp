@@ -17,8 +17,7 @@
 		</div>
 	</form>
 	
-		
-	<%
+	 <%
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); /// HTTP 1.1
 		response.setHeader("Pragma", "no-cache"); /// HTTP 1.0
 		response.setHeader("Expires", "0"); /// proxies
@@ -26,8 +25,8 @@
 		if(session.getAttribute("username") == null){
 			response.sendRedirect("login.jsp");
 		}	
-	%>
-	
+	%> 
+
 	
 	<table class="table table-dark" id="tablelist">
   		<thead>
@@ -42,13 +41,13 @@
 		    <tr>
 		      <td><c:out value='${book.bookName}' /> </td>
 		      <td><c:out value='${book.bookAuthor}' /></td>
-		      <td>Otto</td>     
+		      <td><a href = "${pageContext.request.contextPath}/BookController?action=EDIT&name=${book.bookName}">Edit</a></td> 
+		      <td><a href = "${pageContext.request.contextPath}/BookController?action=DELETE&name=${book.bookName}">Delete</a></td>    
 		    </tr>		      
 		    </c:forEach>
   	    </tbody>  	    
 	</table>	
 	<a href="add.jsp" class="btn btn-info" role="button" id="addbutton">Add new book</a></p>
-	<a href=# class="btn btn-info" role="button" id="showbutton">Show books</a></p>
-
+	<a href="${pageContext.request.contextPath}/BookController?action=LIST" class="btn btn-info" role="button" id="showbutton">Show books</a></p>
 </body>
 </html>
