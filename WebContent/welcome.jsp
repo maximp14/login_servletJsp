@@ -27,7 +27,7 @@
 		}	
 	%> 
 
-	
+		
 	<table class="table table-dark" id="tablelist">
   		<thead>
 		    <tr>      
@@ -41,8 +41,8 @@
 		    <tr>
 		      <td><c:out value='${book.bookName}' /> </td>
 		      <td><c:out value='${book.bookAuthor}' /></td>
-		      <td><a href = "${pageContext.request.contextPath}/BookController?action=EDIT&name=${book.bookName}">Edit</a></td> 
-		      <td><a href = "${pageContext.request.contextPath}/BookController?action=DELETE&name=${book.bookName}">Delete</a></td>    
+		      <td><a href ="${pageContext.request.contextPath}/BookController?action=EDIT&id=${book.id}">Edit</a></td> 
+		      <td><a href ="${pageContext.request.contextPath}/BookController?action=DELETE&id=${book.id}">Delete</a></td>    
 		    </tr>		      
 		    </c:forEach>
   	    </tbody>  	    

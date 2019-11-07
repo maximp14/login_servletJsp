@@ -18,12 +18,19 @@ public class AddBook extends HttpServlet {
 		
 		BookDAO bookDAO = new BookDAO();
 		
+		String id = request.getParameter("id");
 		String bookName = request.getParameter("bname");
 		String authorName = request.getParameter("bauthor");
+		
+		
 		
 		if(!(bookName.isEmpty() && authorName.isEmpty())) {
 			Book book = new Book(bookName, authorName);
 			bookDAO.create(book);
+			response.sendRedirect("welcome.jsp");
+		}else {
+			Book book = new Book(Integer.parseInt(id), bookName, authorName);
+			bookDAO.update(book);
 			response.sendRedirect("welcome.jsp");
 		}
 		

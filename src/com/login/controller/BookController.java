@@ -51,14 +51,18 @@ public class BookController extends HttpServlet {
 	}
 	
 
-	private void deleteBook(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+	private void deleteBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");		
+		bookDAO.delete(Integer.parseInt(id));		
+		listBooks(request,response);		
 	}
 
-	private void editBook(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+	private void editBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		String id = request.getParameter("id");
+		Book book = bookDAO.findOne(Integer.parseInt(id));		
+		request.setAttribute("book", book);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("add.jsp");
+		dispatcher.forward(request, response);			
 	}
 
 	private void listBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -68,5 +72,25 @@ public class BookController extends HttpServlet {
         dispatcher.forward(request, response);
 	}
 	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		Book book;
+		String id = request.getParameter("id");
+		String bookName = request.getParameter("bname");
+		String authorName = request.getParameter("bauthor");		
+		
+		System.out.println("ID: " + Integer.parseInt(id));
+		System.out.println("BOOK NAME: " + bookName);
+		System.out.println("BOOK NAME: " + authorName);
+		
+		if(!(bookName.isEmpty() && authorName.isEmpty())) {
+			book = new Book(bookName, authorName);
+			bookDAO.create(book);
+			response.sendRedirect("welcome.jsp");
+		}else {			
+			book = new Book(Integer.parseInt(id), bookName, authorName);
+			bookDAO.update(book);
+			response.sendRedirect("welcome.jsp");
+		}
+	}
 
 }

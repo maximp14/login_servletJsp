@@ -2,9 +2,17 @@ package com.login.model;
 
 public class Book {
 	
+	private Integer id;
 	private String bookName;
 	private String bookAuthor;
-	
+		
+	public Book(Integer id, String bookName, String bookAuthor) {
+		super();
+		this.id = id;
+		this.bookName = bookName;
+		this.bookAuthor = bookAuthor;
+	}
+
 	public Book(String bookName, String bookAuthor) {
 		super();
 		this.bookName = bookName;
@@ -30,6 +38,14 @@ public class Book {
 
 	public void setBookAuthor(String bookAuthor) {
 		this.bookAuthor = bookAuthor;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Override

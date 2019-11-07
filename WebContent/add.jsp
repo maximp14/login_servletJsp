@@ -12,16 +12,17 @@
 	<div class="frame">
 		<div class="container">	
 			<div class="wrap">
-				<form class="form" action="AddBook" method="post">
+				<form class="form" action="${pageContext.request.contextPath}/AddBook" method="POST">
 				  <div class="form-group">
 			    	<label class="labeladd" for="exampleInputUser">Name</label>
-			    	<input type="text" name="bname" class="form-control" id="inputadd" placeholder="Book name" required>   
+			    	<input type="text" name="bname" class="form-control" id="inputadd" placeholder="Book name" value="${book.bookName}" required/>   
 			  	  </div>
 			  	  <div class="form-group">
 			    	<label class="labeladd" for="exampleInputPassword1">Author</label>
-			    	<input type="text" name="bauthor" class="form-control" id="inputadd" placeholder="Author" required>
-			  	  </div>			   	 
-			  		<button type="submit" class="btn btn-primary" id="buttonadd">Add Book</button> 
+			    	<input type="text" name="bauthor" class="form-control" id="inputadd" placeholder="Author" value="${book.bookAuthor}" required/>
+			  	  </div>
+			  	    <input type = "hidden" name = "id" value = "${book.id}"/>			   	 
+			  		<button type="submit" class="btn btn-primary" id="buttonadd">Save Book</button> 
 			  	</form>
 			 </div>	
 		</div>  
