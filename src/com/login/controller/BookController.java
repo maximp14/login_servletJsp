@@ -61,7 +61,7 @@ public class BookController extends HttpServlet {
 		String id = request.getParameter("id");
 		Book book = bookDAO.findOne(Integer.parseInt(id));		
 		request.setAttribute("book", book);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("add.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
 		dispatcher.forward(request, response);			
 	}
 
@@ -73,7 +73,7 @@ public class BookController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		Book book;
+		//Book book;
 		String id = request.getParameter("id");
 		String bookName = request.getParameter("bname");
 		String authorName = request.getParameter("bauthor");		
@@ -83,14 +83,19 @@ public class BookController extends HttpServlet {
 		System.out.println("BOOK NAME: " + authorName);
 		
 		if(!(bookName.isEmpty() && authorName.isEmpty())) {
-			book = new Book(bookName, authorName);
-			bookDAO.create(book);
-			response.sendRedirect("welcome.jsp");
-		}else {			
-			book = new Book(Integer.parseInt(id), bookName, authorName);
+			Book book = new Book(Integer.parseInt(id), bookName, authorName);
+			System.out.println("ENTRO AL UPDATE");
 			bookDAO.update(book);
 			response.sendRedirect("welcome.jsp");
+			listBooks(request, response);
+		}else { 			
+			Book book = new Book(bookName, authorName);
+			System.out.println("ENTRO AL CREATE");
+			bookDAO.create(book);
+			response.sendRedirect("welcome.jsp");
+			listBooks(request, response);
 		}
+		
 	}
 
 }

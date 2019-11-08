@@ -13,7 +13,7 @@ public class BookDAO{
 	
 	final String CREATE = "INSERT INTO books (boo_name, boo_author) VALUES (?,?)";
 	final String DELETE = "DELETE FROM books WHERE boo_id = ?";
-	final String UPDATE = "UPDATE books SET boo_name = ?, boo_author = ? WHERE boo_name = ?";
+	final String UPDATE = "UPDATE books SET boo_name = ?, boo_author = ? WHERE boo_id = ?";
 	final String GET_ALL = "SELECT boo_id, boo_name, boo_author FROM books ";
 	final String FIND_ONE = "SELECT * FROM books WHERE boo_id = ?";
 	
@@ -79,13 +79,14 @@ public class BookDAO{
 		return book;
 	}
 	
+	// I have to see why the initial query is not working like the others
 	public void update(Book book) {
 		PreparedStatement preparedStatement;
-		
+		System.out.println("ENTRO AL UPDATE DAO");
 		try {
-			preparedStatement = connection.getConnection().prepareStatement(UPDATE);
-			preparedStatement.setString(1, book.getBookName());
-			preparedStatement.setString(2, book.getBookAuthor());
+			String sql = "UPDATE books SET boo_name = '"+book.getBookName()+"', "
+					+ "boo_author = '"+book.getBookAuthor()+"' where boo_id="+book.getId(); // this query works just fine
+			preparedStatement = connection.getConnection().prepareStatement(sql);					
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

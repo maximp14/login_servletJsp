@@ -24,13 +24,19 @@ public class AddBook extends HttpServlet {
 		
 		
 		
-		if(!(bookName.isEmpty() && authorName.isEmpty())) {
-			Book book = new Book(bookName, authorName);
-			bookDAO.create(book);
-			response.sendRedirect("welcome.jsp");
-		}else {
-			Book book = new Book(Integer.parseInt(id), bookName, authorName);
+		
+		if(!(id.isEmpty() && id.isEmpty())) {
+			System.out.println("ENTRO AL UPDATE");
+			System.out.println("ID: " + id);
+			System.out.println("NAME: " + bookName);
+			System.out.println("AUTHOR: " + authorName);
+			Book book = new Book(Integer.parseInt(id), bookName, authorName);			
 			bookDAO.update(book);
+			response.sendRedirect("welcome.jsp");
+		}else { 			
+			System.out.println("ENTRO AL CREATE");			
+			Book book = new Book(bookName, authorName);			
+			bookDAO.create(book);
 			response.sendRedirect("welcome.jsp");
 		}
 		

@@ -23,7 +23,7 @@ public class LoginController extends HttpServlet {
 		if(loginDAO.authentication(uName, uPassword)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", uName);		
-			response.sendRedirect("welcome.jsp");
+			response.sendRedirect("welcome.jsp");		
 		}else {
 			response.sendRedirect("login.jsp");
 		}
