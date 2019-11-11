@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.login.dao.BookDAO;
+import com.login.dao.BookDAOImp;
 import com.login.model.Book;
 
 
 @WebServlet("/BookController")
 public class BookController extends HttpServlet {
-	private BookDAO bookDAO = new BookDAO();
+	private BookDAOImp bookDAO = new BookDAOImp();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String action = request.getParameter("action");
@@ -66,7 +66,7 @@ public class BookController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		BookDAO bookDAO = new BookDAO();
+		BookDAOImp bookDAO = new BookDAOImp();
 		
 		String id = request.getParameter("id");
 		String bookName = request.getParameter("bname");

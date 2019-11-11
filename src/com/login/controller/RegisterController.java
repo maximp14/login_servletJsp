@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.login.dao.RegisterDAO;
+import com.login.dao.RegisterDAOImp;
 import com.login.model.User;
 
 @WebServlet("/Register")
@@ -15,7 +15,7 @@ public class RegisterController extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RegisterDAO registerDAO = new RegisterDAO();
+		RegisterDAOImp registerDAO = new RegisterDAOImp();
 		String uName = request.getParameter("uname");
 		String uPassword = request.getParameter("pass");
 		String uEmail = request.getParameter("email");
