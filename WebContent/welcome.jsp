@@ -41,8 +41,8 @@
 		    <tr>
 		      <td><c:out value='${book.bookName}' /> </td>
 		      <td><c:out value='${book.bookAuthor}' /></td>
-		      <td><a href ="${pageContext.request.contextPath}/BookController?action=EDIT&id=${book.id}">Edit</a></td> 
-		      <td><a href ="${pageContext.request.contextPath}/BookController?action=DELETE&id=${book.id}">Delete</a></td>    
+		      <td><a href ="${pageContext.request.contextPath}/BookController?action=EDIT&id=${book.id}">Edit</a> /
+		      	  <a href ="${pageContext.request.contextPath}/BookController?action=DELETE&id=${book.id}">Delete</a></td>    
 		    </tr>		      
 		    </c:forEach>
   	    </tbody>  	    

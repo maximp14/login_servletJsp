@@ -16,10 +16,7 @@ public class DBConnection {
 	        if(connection == null){
 	            try {
 	            	Class.forName("com.mysql.cj.jdbc.Driver");
-	                connection = DriverManager.getConnection(url, login, password);
-	                if(connection != null){
-	                    System.out.println("Connection OK");
-	                }
+	                connection = DriverManager.getConnection(url, login, password);	               
 	            } catch (SQLException e) {
 	                System.out.println(e);
 	            }

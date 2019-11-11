@@ -12,7 +12,7 @@
 	<div class="frame">
 		<div class="container">	
 			<div class="wrap">
-				<form class="form" action="AddBook" method="POST">
+				<form class="form" action="BookController" method="POST">
 				  <div class="form-group">
 			    	<label class="labeladd" for="exampleInputUser">Name</label>
 			    	<input type="text" name="bname" class="form-control" id="inputadd" placeholder="Book name" value="${book.bookName}" required/>   

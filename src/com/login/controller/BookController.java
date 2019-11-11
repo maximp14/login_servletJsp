@@ -19,16 +19,9 @@ import com.login.model.Book;
 public class BookController extends HttpServlet {
 	private BookDAO bookDAO = new BookDAO();
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String action = request.getParameter("action");
-		//BookDAO bookDAO = new BookDAO();
-		/*List<Book> bookList = bookDAO.findAll();	
-		if(action.equals("LIST")) {
-		request.setAttribute("bookList", bookList);		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
-        dispatcher.forward(request, response);*/
-        
+		
         if(action == null) {
         	action = "LIST";
         }
@@ -73,29 +66,26 @@ public class BookController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		//Book book;
+		BookDAO bookDAO = new BookDAO();
+		
 		String id = request.getParameter("id");
 		String bookName = request.getParameter("bname");
-		String authorName = request.getParameter("bauthor");		
-		
-		System.out.println("ID: " + Integer.parseInt(id));
-		System.out.println("BOOK NAME: " + bookName);
-		System.out.println("BOOK NAME: " + authorName);
-		
-		if(!(bookName.isEmpty() && authorName.isEmpty())) {
-			Book book = new Book(Integer.parseInt(id), bookName, authorName);
+		String authorName = request.getParameter("bauthor");
+	
+		if(!(id == null)) {
 			System.out.println("ENTRO AL UPDATE");
+			System.out.println("ID: " + id);
+			System.out.println("NAME: " + bookName);
+			System.out.println("AUTHOR: " + authorName);
+			Book book = new Book(Integer.parseInt(id), bookName, authorName);			
 			bookDAO.update(book);
 			response.sendRedirect("welcome.jsp");
-			listBooks(request, response);
 		}else { 			
-			Book book = new Book(bookName, authorName);
-			System.out.println("ENTRO AL CREATE");
+			System.out.println("ENTRO AL CREATE");			
+			Book book = new Book(bookName, authorName);			
 			bookDAO.create(book);
 			response.sendRedirect("welcome.jsp");
-			listBooks(request, response);
 		}
-		
 	}
 
 }
