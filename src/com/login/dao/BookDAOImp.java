@@ -81,8 +81,7 @@ public class BookDAOImp implements BookDAO{
 	
 	// I have to see why the initial query is not working like the others
 	public void update(Book book) {
-		PreparedStatement preparedStatement;
-		System.out.println("ENTRO AL UPDATE DAO");
+		PreparedStatement preparedStatement;	
 		try {
 			String sql = "UPDATE books SET boo_name = '"+book.getBookName()+"', "
 					+ "boo_author = '"+book.getBookAuthor()+"' where boo_id="+book.getId(); // this query works just fine

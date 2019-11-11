@@ -72,16 +72,11 @@ public class BookController extends HttpServlet {
 		String bookName = request.getParameter("bname");
 		String authorName = request.getParameter("bauthor");
 	
-		if(!(id == null)) {
-			System.out.println("ENTRO AL UPDATE");
-			System.out.println("ID: " + id);
-			System.out.println("NAME: " + bookName);
-			System.out.println("AUTHOR: " + authorName);
+		if(!(id == null)) {			
 			Book book = new Book(Integer.parseInt(id), bookName, authorName);			
 			bookDAO.update(book);
 			response.sendRedirect("welcome.jsp");
-		}else { 			
-			System.out.println("ENTRO AL CREATE");			
+		}else {			
 			Book book = new Book(bookName, authorName);			
 			bookDAO.create(book);
 			response.sendRedirect("welcome.jsp");
